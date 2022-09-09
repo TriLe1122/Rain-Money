@@ -52,14 +52,14 @@
           <div class="card w-100 my-3 ms-4 p-3 gap-3">
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum ratione eaque, beatae veritatis recusandae
               iste eligendi, sequi, illo reiciendis culpa commodi distinctio facilis repellendus! Nisi!</p>
-            <form class="d-flex flex-column gap-3">
+            <form class="d-flex flex-column gap-3" onsubmit="app.budgetsController.createBudget()">
               <div>
                 <label for="name">Create a Budget</label>
                 <input type="text" class="form-control" name="name" required placeholder="Budget Here">
               </div>
               <div>
-                <label for="name">Set a Price $</label>
-                <input type="number" class="form-control" name="name" required placeholder="Enter The Money">
+                <label for="total">Set a Price $</label>
+                <input type="number" class="form-control" name="total" required placeholder="Enter The Money">
               </div>
               <div>
                 <label for="type">Type</label>
@@ -70,7 +70,7 @@
                 </select>
               </div>
               <div class="d-flex justify-content-end mt-2">
-                <button class="btn btn-primary ">Budget!</button>
+                <button class="btn btn-primary " type="submit">Budget!</button>
               </div>
             </form>
           </div>

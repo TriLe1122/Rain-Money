@@ -1,4 +1,6 @@
 import { appState } from "../AppState.js";
+import { budgetsService } from "../Services/BudgetsService.js";
+import { getFormData } from "../Utils/FormHandler.js";
 import { setHTML } from "../Utils/Writer.js";
 
 function _drawBudget() {
@@ -9,12 +11,26 @@ function _drawBudget() {
 }
 export class BudgetsController {
   constructor() {
-    console.log("budgets controller work?");
-
-
+    appState.on('budgets', _drawBudget)
+    appState.on('items', _drawBudget)
     _drawBudget()
   }
   createBudget() {
-
+    try {
+      window.event.preventDefault()
+      const form = window.event.target
+      let formData = getFormData(form)
+      budgetsService.createBudget(formData)
+      console.log(formData);
+      // @ts-ignore
+      form.reset()
+    } catch (error) {
+      console.log('[CREATE _BUDGET]', error);
+    }
   }
 }
+
+
+
+
+// form name and the form for have to match for the formhandler to work
